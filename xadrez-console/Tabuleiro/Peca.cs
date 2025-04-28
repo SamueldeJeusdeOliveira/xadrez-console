@@ -1,5 +1,8 @@
-namespace tabuleiro{
-    abstract class Peca{
+namespace tabuleiro
+{
+    abstract class Peca
+    {
+
         public Posicao posicao { get; set; }
         public Cor cor { get; protected set; }
         public int qteMovimentos { get; protected set; }
@@ -12,10 +15,12 @@ namespace tabuleiro{
             this.cor = cor;
             this.qteMovimentos = 0;
         }
-        public void IncrementarQteMovimentos()
+
+        public void incrementarQteMovimentos()
         {
             qteMovimentos++;
         }
+
         public bool existeMovimentosPossiveis()
         {
             bool[,] mat = movimentosPossiveis();
@@ -31,10 +36,12 @@ namespace tabuleiro{
             }
             return false;
         }
+
         public bool podeMoverPara(Posicao pos)
         {
             return movimentosPossiveis()[pos.linha, pos.coluna];
         }
+
         public abstract bool[,] movimentosPossiveis();
     }
 }

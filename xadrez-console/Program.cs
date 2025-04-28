@@ -8,33 +8,34 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
+
             try
             {
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
                 while (!partida.terminada)
                 {
+
                     try
                     {
                         Console.Clear();
-                        Tela.imprimirTabuleiro(partida.tab);
-                        Console.WriteLine();
-                        Console.WriteLine("Turno: " + partida.turno);
-                        Console.WriteLine("Aguardando a Jogada: " + partida.jogadorAtual);
+
+                        Tela.imprimirPartida(partida);
+
                         Console.WriteLine();
                         Console.Write("Origem: ");
-                        Posicao origem = Tela.LerPosicaoXadrez().ToPosicao();
+                        Posicao origem = Tela.lerPosicaoXadrez().ToPosicao();
                         partida.validarPosicaoDeOrigem(origem);
-                        partida.validarPosicaoDeDestino(origem, origem);
+
                         bool[,] posicoesPossiveis = partida.tab.peca(origem).movimentosPossiveis();
 
                         Console.Clear();
-
                         Tela.imprimirTabuleiro(partida.tab, posicoesPossiveis);
 
-
+                        Console.WriteLine();
                         Console.Write("Destino: ");
-                        Posicao destino = Tela.LerPosicaoXadrez().ToPosicao();
+                        Posicao destino = Tela.lerPosicaoXadrez().ToPosicao();
+                        partida.validarPosicaoDeDestino(origem, destino);
 
                         partida.realizaJogada(origem, destino);
                     }
@@ -44,18 +45,14 @@ namespace xadrez_console
                         Console.ReadLine();
                     }
                 }
-                Tela.imprimirTabuleiro(partida.tab);
 
-                Console.ReadLine();
             }
             catch (TabuleiroException e)
             {
                 Console.WriteLine(e.Message);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("Erro inesperado: " + e.Message);
-            }
+
+            Console.ReadLine();
         }
     }
 }
