@@ -21,7 +21,7 @@ namespace xadrez
 
             //acima
             pos.definirValores(posicao.linha - 1, posicao.coluna);
-            while (tab.PosicaoValida(pos) && podeMover(pos))
+            while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
                 if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
@@ -32,7 +32,7 @@ namespace xadrez
             }
             //abaixo
             pos.definirValores(posicao.linha + 1, posicao.coluna);
-            while (tab.PosicaoValida(pos) && podeMover(pos))
+            while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
                 if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
@@ -43,7 +43,7 @@ namespace xadrez
             }
             //esquerda
             pos.definirValores(posicao.linha, posicao.coluna - 1);
-            while (tab.PosicaoValida(pos) && podeMover(pos))
+            while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
                 if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
@@ -54,7 +54,7 @@ namespace xadrez
             }
             //direita
             pos.definirValores(posicao.linha, posicao.coluna + 1);
-            while (tab.PosicaoValida(pos) && podeMover(pos))
+            while (tab.posicaoValida(pos) && podeMover(pos))
             {
                 mat[pos.linha, pos.coluna] = true;
                 if (tab.peca(pos) != null && tab.peca(pos).cor != cor)
